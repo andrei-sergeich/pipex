@@ -55,7 +55,7 @@ dkms.conf
 .idea/
 .vscode/
 cmake-build-debug
-*.txt
+#*.txt
 #CMakeLists.txt
 *.code-workspace
 *.pdf

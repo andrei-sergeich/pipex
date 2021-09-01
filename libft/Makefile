@@ -18,7 +18,6 @@ $(NAME):	$(OBJS)
 %.o:		%.c $(HEADER)
 			@gcc $(CFLAGS) $(OPTFLAGS) -c $< -o $@
 
-
 clean:
 			@rm -f $(OBJS) $(OBJS_B)
 

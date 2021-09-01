@@ -6,18 +6,42 @@
 int main()
 {
 	int	id;
+	int	n;
+	int	i;
 
 	id = fork();
 	if (id == 0)
-		printf("hello from child\n");
+		n = 1;
 	else
+		n = 6;
+	if (id != 0)
+		wait(&id);
+	i = n;
+	while (i < n + 5)
 	{
-		fork();
-		printf("hello from main\n");
+		printf("%d ", i);
+		fflush(stdout);
+		i++;
 	}
-//	printf("%s\n", envp[0]);
+	printf("\n");
 	return (0);
 }
+
+//int main()
+//{
+//	int	id;
+//
+//	id = fork();
+//	if (id == 0)
+//		printf("hello from child\n");
+//	else
+//	{
+//		fork();
+//		printf("hello from main\n");
+//	}
+////	printf("%s\n", envp[0]);
+//	return (0);
+//}
 
 //int	main(int argc, char *argv[], char *envp[])
 //{

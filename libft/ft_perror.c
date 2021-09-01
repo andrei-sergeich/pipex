@@ -3,5 +3,5 @@
 void	ft_perror(char *str)
 {
 	perror(str);
-//	exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
