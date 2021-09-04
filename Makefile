@@ -1,6 +1,7 @@
 NAME		=	pipex
 
-SRCS_FILES	= 	${shell find ./srcs_man -name "*.c"}
+SRCS_FILES	= 	./srcs_man/main.c
+#SRCS_FILES	= 	${shell find ./srcs_man -name "*.c"}
 
 SRCS_MAN	= 	$(SRCS_FILES)
 OBJS_MAN	=	$(patsubst %.c,%.o,$(SRCS_MAN))
