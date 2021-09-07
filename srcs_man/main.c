@@ -6,6 +6,8 @@
 #include <errno.h>
 #include <time.h>
 
+#define PROCESS_NUM 10
+
 int	main(int argc, char *argv[])
 {
 

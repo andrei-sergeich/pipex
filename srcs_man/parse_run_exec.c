@@ -83,5 +83,5 @@ int	main(int argc, char *argv[], char *envp[])
 	if (argc != 2) /* REPLACE ON 5 */
 		ft_error("Error: wrong count of arguments");
 	pipex(argc, argv, envp);
-	return(0);
+	return (0);
 }
