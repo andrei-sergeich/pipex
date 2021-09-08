@@ -55,8 +55,8 @@ dkms.conf
 .idea/
 .vscode/
 cmake-build-debug
-romanian
 pipex-tester
+romanian
 #*.txt
 #CMakeLists.txt
 *.code-workspace
