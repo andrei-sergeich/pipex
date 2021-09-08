@@ -23,3 +23,33 @@ char	*ft_strjoin_mod(char const *s1, char connector, char const *s2)
 	return (str);
 }
 
+void	liberator(char **free_me)
+{
+	int		it;
+
+	it = 0;
+	while (free_me[it])
+	{
+		free(free_me[it]);
+		it++;
+	}
+	free(free_me);
+}
+
+char	**splitting_paths(char *envp[])
+{
+	int		it;
+	char	**paths;
+
+	it = 0;
+	while (envp[it])
+	{
+		if (!ft_strncmp(envp[it], "PATH=", 5))
+		{
+			paths = ft_split(envp[it] + 5, ':');
+			return (paths);
+		}
+		it++;
+	}
+	return (NULL);
+}

@@ -1,7 +1,7 @@
 NAME		=	pipex
 
-SRCS_FILES	= 	./srcs_man/main.c
-#SRCS_FILES	= 	${shell find ./srcs_man -name "*.c"}
+#SRCS_FILES	= 	./srcs_man/main.c	./srcs_man/pipex.c	./srcs_man/utils.c
+SRCS_FILES	= 	${shell find ./srcs_man -name "*.c"}
 
 SRCS_MAN	= 	$(SRCS_FILES)
 OBJS_MAN	=	$(patsubst %.c,%.o,$(SRCS_MAN))
@@ -16,13 +16,14 @@ RM			=	rm -f
 all:		$(NAME)
 
 $(NAME):	$(OBJS_MAN)
+			@echo "\033[33m----Compiling libft----"
 			@make -C $(LIB_DIR)
 			@$(CC) $(CFLAGS) $(LIB_DIR)/libft.a $(OBJS_MAN) -o $(NAME)
-			@clear
-			@echo "Let's play, my Master!!!"
+			@#clear
+			@echo "Let's pipe, my Master!!!"
 
-%.o:		%.c
-			$(CC) $(CFLAGS) $(INC) -c $< -o $@
+%.o:		%.c libft/*.c
+			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
 			@make clean -C $(LIB_DIR)

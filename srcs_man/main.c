@@ -1,15 +1,9 @@
-//#include <stdio.h>
-//#include <stdlib.h>
-#include <string.h>
-#include "../libft/libft.h"
-#include <sys/wait.h>
-#include <errno.h>
-#include <time.h>
+#include "../include/pipex.h"
 
-#define PROCESS_NUM 10
-
-int	main(int argc, char *argv[])
+int	main(int argc, char *argv[], char*envp[])
 {
-
+	if (argc != 5)
+		ft_error("Error: wrong count of arguments");
+	pipex(argv, envp);
 	return (0);
 }
