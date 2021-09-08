@@ -2,6 +2,6 @@
 
 int	main(int argc, char *argv[], char*envp[])
 {
-	pipex(argv, envp);
+	pipex(argc, argv, envp);
 	return (0);
 }

@@ -62,14 +62,38 @@ void	second_command_executing(int *fd, char *argv[], char *envp[])
 	executer(argv[3], envp);
 }
 
+void	here_doc(char *argv[], char *envp[])
+{
+	char	*line;
+	(void)argv;
+	(void)envp;
+
+	ft_putstr_fd("pipe heredoc> ", 1);
+	while (get_next_line(0, &line))
+	{
+		ft_putstr_fd("pipe heredoc> ", 1);
+		if (ft_strcmp(argv[2], line) == 0)
+		{
+//			printf("%s\n", line);
+			break ;
+		}
+//		ft_putendl_fd(line, 1);
+		free(line);
+	}
+	free(line);
+}
+
 void	pipex(int argc, char *argv[], char *envp[])
 {
 	int	fd[2];
 	int	pid1;
 	int	pid2;
 
-	if (argc != 5)
+//	argc_and_heredoc_check(argc, argv, envp);
+	if (argc < 5)
 		ft_error("Error: wrong count of arguments");
+//	if (ft_strcmp(argv[1], "here_doc") == 0)
+//		here_doc(argv, envp);
 	if (pipe(fd) == -1)
 		ft_perror("ERROR");
 	pid1 = fork();

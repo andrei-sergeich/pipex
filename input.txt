@@ -1,3 +1,13 @@
-ojghkoprt
-erpirot
-erkt
+CMakeLists.txt
+Makefile
+README.md
+cmake-build-debug
+include
+input.txt
+libft
+output.txt
+pipex
+pipex-tester
+romanian
+srcs_bonus
+srcs_man

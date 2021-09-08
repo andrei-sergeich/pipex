@@ -4,9 +4,9 @@ project(pipex C)
 set(CMAKE_C_STANDARD 99)
 
 set(SOURCE_FILES include/pipex.h
-        srcs_man/main.c
-        srcs_man/pipex.c
-        srcs_man/utils.c
+        srcs_bonus/main_bonus.c
+        srcs_bonus/pipex_bonus.c
+        srcs_bonus/utils_bonus.c
         )
 
 include_directories(libft)
