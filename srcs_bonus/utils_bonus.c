@@ -1,4 +1,22 @@
-#include "../include/pipex.h"
+#include "../include/pipex_bonus.h"
+
+char	**splitting_paths(char *envp[])
+{
+	int		it;
+	char	**paths;
+
+	it = 0;
+	while (envp[it])
+	{
+		if (!ft_strncmp(envp[it], "PATH=", 5))
+		{
+			paths = ft_split(envp[it] + 5, ':');
+			return (paths);
+		}
+		it++;
+	}
+	return (NULL);
+}
 
 char	*ft_strjoin_mod(char const *s1, char connector, char const *s2)
 {
@@ -36,20 +54,18 @@ void	liberator(char **free_me)
 	free(free_me);
 }
 
-char	**splitting_paths(char *envp[])
+int	opener(char *path, char flag)
 {
-	int		it;
-	char	**paths;
+	int	fd;
 
-	it = 0;
-	while (envp[it])
-	{
-		if (!ft_strncmp(envp[it], "PATH=", 5))
-		{
-			paths = ft_split(envp[it] + 5, ':');
-			return (paths);
-		}
-		it++;
-	}
-	return (NULL);
+	fd = -1;
+	if (flag == 'I')
+		fd = open(path, O_RDONLY);
+	else if (flag == 'O')
+		fd = open(path, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	else if (flag == 'h')
+		fd = open(path, O_CREAT | O_WRONLY | O_APPEND, 0777);
+	if (fd == -1)
+		ft_perror("ERROR (input or output file)");
+	return (fd);
 }

@@ -1,4 +1,4 @@
-#include "../include/pipex.h"
+#include "../include/pipex_bonus.h"
 
 int	main(int argc, char *argv[], char*envp[])
 {

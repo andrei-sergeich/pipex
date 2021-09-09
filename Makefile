@@ -11,6 +11,7 @@ OBJS_BONUS	=	$(patsubst %.c,%.o,$(SRCS_BONUS))
 
 LIB_DIR		=	libft
 HEADER		=	-I./include/pipex.h
+HEADER_B	=	-I./include/pipex_bonus.h
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -18,22 +19,22 @@ RM			=	rm -f
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS_MAN)
+$(NAME):	$(OBJS_MAN) include/pipex.h
 			@echo "\033[33m----Compiling libft----"
 			@make -C $(LIB_DIR)
 			@$(CC) $(CFLAGS) $(HEADER) $(LIB_DIR)/libft.a $(OBJS_MAN) -o $(NAME)
 			@#clear
 			@echo "Let's pipe, my Master!!!"
 
-bonus:		$(OBJS_BONUS)
+bonus:		$(OBJS_BONUS) include/pipex_bonus.h
 			@echo "\033[33m----Compiling libft----"
 			@make -C $(LIB_DIR)
-			@$(CC) $(CFLAGS) $(HEADER) $(LIB_DIR)/libft.a $(OBJS_BONUS) -o $(NAME)
+			@$(CC) $(CFLAGS) $(HEADER_B) $(LIB_DIR)/libft.a $(OBJS_BONUS) -o $(NAME)
 			@#clear
 			@echo "Let's many pipe, my Master!!!"
 
 
-%.o:		%.c libft/*.c include/pipex.h
+%.o:		%.c libft/*.c
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:

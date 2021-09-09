@@ -25,7 +25,7 @@ void	executer(char *cmd, char *envp[])
 	}
 	liberator(command);
 	liberator(paths);
-	perror("ERROR");
+	ft_perror("ERROR");
 }
 
 void	first_command_executing(int *fd, char *argv[], char *envp[])
@@ -34,11 +34,11 @@ void	first_command_executing(int *fd, char *argv[], char *envp[])
 
 	f_in = open(argv[1], O_RDONLY);
 	if (f_in < 0)
-		ft_error("Error: can't open input file");
+		ft_perror("ERROR (input file)");
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-		perror("ERROR");
+		ft_perror("ERROR");
 	if (dup2(f_in, STDIN_FILENO) == -1)
-		perror("ERROR");
+		ft_perror("ERROR");
 	close(fd[0]);
 	close(f_in);
 	close(fd[1]);
@@ -51,11 +51,11 @@ void	second_command_executing(int *fd, char *argv[], char *envp[])
 
 	f_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	if (f_out < 0)
-		ft_error("Error: can't open output file");
+		ft_perror("ERROR (output file)");
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-		perror("ERROR");
+		ft_perror("ERROR");
 	if (dup2(f_out, STDOUT_FILENO) == -1)
-		perror("ERROR");
+		ft_perror("ERROR");
 	close(fd[1]);
 	close(f_out);
 	close(fd[0]);

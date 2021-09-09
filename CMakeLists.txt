@@ -3,7 +3,7 @@ project(pipex C)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES include/pipex.h
+set(SOURCE_FILES include/pipex_bonus.h
         srcs_bonus/main_bonus.c
         srcs_bonus/pipex_bonus.c
         srcs_bonus/utils_bonus.c
