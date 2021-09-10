@@ -20,6 +20,7 @@
 
 void	pipex(int argc, char *argv[], char *envp[]);
 void	here_doc(int argc, char *argv[]);
+void	write_to_limiter(int *fd, char *limiter);
 void	command_executing(char *cmd, char *envp[]);
 void	executer(char *cmd, char *envp[]);
 
