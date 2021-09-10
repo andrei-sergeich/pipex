@@ -6,7 +6,7 @@
 /*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:12:04 by cmero             #+#    #+#             */
-/*   Updated: 2021/08/19 11:44:03 by cmero            ###   ########.fr       */
+/*   Updated: 2021/09/09 22:50:20 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_new_line_checker(char *s)
 {
-	int		x;
+	int	x;
 
 	x = 0;
 	if (!s)
@@ -30,19 +30,21 @@ static char	*ft_new_line_checker(char *s)
 
 static int	ft_checker_mallocer(int fd, char **line, char **buf)
 {
-	if ((read(fd, NULL, 0) < 0) || !line || BUFFER_SIZE <= 0)
+	if ((read(fd, NULL, 0) < 0) || !line || (BUFFER_SIZE <= 0))
 		return (-1);
 	*buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
+	if (!*buf)
 		return (-1);
 	return (0);
 }
 
-static void	ft_connector_liberator(char **mem_liber, char **line, char *buf)
+static void	ft_connector_liberator(char **line, char *buf)
 {
-	*mem_liber = *line;
+	char	*mem_liber;
+
+	mem_liber = *line;
 	*line = ft_strjoin(*line, buf);
-	free(*mem_liber);
+	free(mem_liber);
 }
 
 static char	*ft_sump_checker(char **sump, char **line)
@@ -76,7 +78,6 @@ int	get_next_line(int fd, char **line)
 	static char	*sump;
 	char		*buf;
 	char		*p_nline;
-	char		*mem_liber;
 	int			qbr;
 
 	p_nline = NULL;
@@ -94,7 +95,7 @@ int	get_next_line(int fd, char **line)
 			*p_nline = '\0';
 			sump = ft_strdup(++p_nline);
 		}
-		ft_connector_liberator(&mem_liber, line, buf);
+		ft_connector_liberator(line, buf);
 	}
 	free(buf);
 	return (qbr && sump);

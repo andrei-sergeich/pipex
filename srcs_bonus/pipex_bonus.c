@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/09 22:30:26 by cmero             #+#    #+#             */
+/*   Updated: 2021/09/10 15:04:08 by                  ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/pipex_bonus.h"
 
 void	executer(char *cmd, char *envp[])
@@ -57,13 +69,16 @@ void	here_doc(int argc, char *argv[])
 					perror("ERROR - 12");
 			}
 		}
-		exit(0);
+		free(line);
+		close(fd[1]);
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
 		close(fd[1]);
 		if (dup2(fd[0], STDIN_FILENO) == -1)
 			ft_perror("ERROR - 13");
+		close(fd[0]);
 		waitpid(pid, NULL, 0);
 	}
 }
@@ -83,6 +98,7 @@ void	command_executing(char *cmd, char *envp[])
 		close(fd[0]);
 		if (dup2(fd[1], STDOUT_FILENO) == -1)
 			ft_perror("ERROR - 5");
+		close(fd[1]);
 		executer(cmd, envp);
 	}
 	else
@@ -90,6 +106,7 @@ void	command_executing(char *cmd, char *envp[])
 		close(fd[1]);
 		if (dup2(fd[0], STDIN_FILENO) == -1)
 			ft_perror("ERROR - 6");
+		close(fd[0]);
 		waitpid(pid, NULL, 0);
 	}
 }

@@ -37,12 +37,12 @@ int	ft_atoi_only_for_num(const char *str)
 	while (str[in])
 	{
 		if (str[in] < 48 || str[in] > 57)
-			ft_error("Error: not number in the sump");
+			ft_error("Error: not number");
 		num = num * 10 + (str[in] - '0');
 		in++;
 	}
 	num = num * sign;
 	if (num > 2147483647 || num < -2147483648)
 		ft_error("Error: argument not in INT");
-	return (num);
+	return ((int)num);
 }

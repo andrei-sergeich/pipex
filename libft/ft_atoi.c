@@ -12,11 +12,12 @@
 
 #include "libft.h"
 
-static int	positive_or_negative(char in, int sign)
+static int	positive_or_negative(char in)
 {
 	if (in == 45)
-		sign = -sign;
-	return (sign);
+		return (-1);
+	else
+		return (1);
 }
 
 int	ft_atoi(const char *str)
@@ -32,8 +33,8 @@ int	ft_atoi(const char *str)
 			str[in] != '\0')
 		in++;
 	if (str[in] == 43 || str[in] == 45)
-		sign = positive_or_negative(str[in++], sign);
-		/*sign = (str[in++] & 2) - 1;*/
+		sign = positive_or_negative(str[in++]);
+		/* sign = (str[in++] & 2) - 1; */
 	if (str[in] < 48 || str[in] > 57)
 		return (0);
 	while ((str[in] > 47) && (str[in] < 58))
@@ -43,5 +44,5 @@ int	ft_atoi(const char *str)
 		return (-1);
 	if (num < -2147483648)
 		return (0);
-	return (num);
+	return ((int)num);
 }
