@@ -6,7 +6,7 @@
 /*   By: cmero <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/13 13:49:03 by cmero             #+#    #+#             */
-/*   Updated: 2021/08/31 16:18:11 by                  ###   ########.fr       */
+/*   Updated: 2021/09/14 17:41:27 by cmero            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strcpy(char *dst, const char *src);
 void	ft_strclr(char *s);
+int		get_next_line(int fd, char **line);
 
 /*
 **		puts
@@ -115,6 +116,5 @@ int		ft_lstfindmax_val(t_list *lst);
 int		ft_lstfindmin_val(t_list *lst);
 int		ft_lstfind_ind_of_max_value(t_list *lst);
 int		ft_lstfind_ind_of_min_value(t_list *lst);
-int		get_next_line(int fd, char **line);
 
 #endif
